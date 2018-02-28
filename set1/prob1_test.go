@@ -30,3 +30,6 @@ func hexDecode(t *testing.T, s string) []byte {
 	}
 	return v
 }
+func corpusFromFile(t *testing) {
+
+}
