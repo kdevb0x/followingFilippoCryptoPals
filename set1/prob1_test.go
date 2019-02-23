@@ -1,8 +1,13 @@
+// Copyright (C) 2018-2019 Kdevb0x Ltd.
+// This software may be modified and distributed under the terms
+// of the MIT license.  See the LICENSE file for details.
+
 package set1
 
 import (
 	"bytes"
 	"encoding/hex"
+	"io/ioutil"
 	"testing"
 )
 
@@ -30,6 +35,18 @@ func hexDecode(t *testing.T, s string) []byte {
 	}
 	return v
 }
-func corpusFromFile(t *testing) {
+func corpusFromFile(t *testing, name string) map[rune]float64 {
+	text, err := ioutil.ReadFile(name)
+	if err != nil {
+		t.Fatal("failed to open corpus file:", err)
+	}
 
+	return buildCorpus(string(text))
+}
+
+func TestProblem3(t *testing.T) {
+	c := corpusFromFile(t, "_testdata/aliceinwonderland.txt")
+	for char, val := range c {
+		t.Logf("%c: %.5f", char)
+	}
 }
