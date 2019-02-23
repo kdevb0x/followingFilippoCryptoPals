@@ -24,7 +24,7 @@ func TestProb2(t *testing.T) {
 	res := xor(hexDecode(t, "1c0111001f010100061a024b53535009181c"),
 		hexDecode(t, "686974207468652062756c6c277320657965"))
 	if !bytes.Equal(res, hexDecode(t, "746865206b696420646f6e277420706c6179")) {
-		t.Error("bad result %x", res)
+		t.Errorf("bad result %x", res)
 	}
 }
 

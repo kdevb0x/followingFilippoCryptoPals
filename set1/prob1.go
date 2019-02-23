@@ -16,7 +16,7 @@ func hex2base64(hs string) (string, error) {
 	if err != nil {
 		return "", err
 	}
-	log.Println("%s", err)
+	log.Printf("%s\n", err)
 	return base64.StdEncoding.EncodeToString(v), nil
 
 }
