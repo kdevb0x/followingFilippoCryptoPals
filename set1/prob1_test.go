@@ -35,7 +35,7 @@ func hexDecode(t *testing.T, s string) []byte {
 	}
 	return v
 }
-func corpusFromFile(t *testing, name string) map[rune]float64 {
+func corpusFromFile(t *testing.T, name string) map[rune]float64 {
 	text, err := ioutil.ReadFile(name)
 	if err != nil {
 		t.Fatal("failed to open corpus file:", err)
@@ -47,6 +47,6 @@ func corpusFromFile(t *testing, name string) map[rune]float64 {
 func TestProblem3(t *testing.T) {
 	c := corpusFromFile(t, "_testdata/aliceinwonderland.txt")
 	for char, val := range c {
-		t.Logf("%c: %.5f", char)
+		t.Logf("%c: %.5f", char, val)
 	}
 }
