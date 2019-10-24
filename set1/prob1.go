@@ -8,6 +8,7 @@ import (
 	"encoding/base64"
 	"encoding/hex"
 	"log"
+	"math/bits"
 	"unicode/utf8"
 )
 
@@ -80,4 +81,15 @@ func repeatingKeyXOR(key, plaintext []byte) []byte {
 		ciphertext[j] = plaintext[j] ^ key[j%len(key)]
 	}
 	return ciphertext
+}
+
+func hammingDistance(a, b []byte) int {
+	if len(a) != len(b) {
+		panic("argument lengths differ!")
+	}
+	var sum int
+	for i := range a {
+		sum += bits.OnesCount8(a[i] ^ b[i])
+	}
+	return sum
 }

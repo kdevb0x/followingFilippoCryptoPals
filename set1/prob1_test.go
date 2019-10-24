@@ -65,3 +65,9 @@ I go crazy when I hear a cymbal`
 		t.Fail()
 	}
 }
+
+func TestHammingDistance(t *testing.T) {
+	if res := hammingDistance([]byte("this is a test"), []byte("wokka wokka!!!")); res != 37 {
+		t.Fatal("wrong Hamming distance:", res)
+	}
+}
