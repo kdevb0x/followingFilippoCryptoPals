@@ -71,3 +71,13 @@ func findSingleXORKey(in []byte, c map[rune]float64) []byte {
 	}
 	return res
 }
+
+// Challenge 5
+
+func repeatingKeyXOR(key, plaintext []byte) []byte {
+	var ciphertext = make([]byte, len(plaintext))
+	for j := range plaintext {
+		ciphertext[j] = plaintext[j] ^ key[j%len(key)]
+	}
+	return ciphertext
+}
